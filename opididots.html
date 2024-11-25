@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opidots Services</title>
+    <style>
+        /* Reset styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            line-height: 1.6;
+            background: url('background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            color: #ffd700;
+            border-bottom: 5px solid #00ced1;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-family: 'Pirata One', cursive;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        nav {
+            margin-top: 2rem;
+        }
+
+        nav a {
+            color: #ffd700;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #00ced1;
+        }
+
+        section {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+        }
+
+        .info {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .info p {
+            font-size: 1.1rem;
+            color: #f4f4f4;
+            margin-bottom: 1.5rem;
+        }
+
+        .services {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .services ul {
+            list-style: none;
+            padding: 0;
+            color: #f4f4f4;
+            text-align: left;
+            margin: 1rem auto;
+            max-width: 800px;
+        }
+
+        .services ul li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .services ul li::before {
+            content: "✨";
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .discord-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .discord-section a {
+            color: #00ced1;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .discord-section a:hover {
+            color: #ffd700;
+        }
+
+        /* Modal styles */
+        .vouch-modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+            overflow: auto; /* Enable scrolling if needed */
+            padding-top: 60px;
+            color: #fff;
+        }
+
+        .vouch-modal-content {
+            background-color: #333;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .vouch-modal input,
+        .vouch-modal textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+            border: none;
+            background-color: #f4f4f4;
+            color: #000;
+        }
+
+        .vouch-modal button {
+            padding: 1rem 2rem;
+            background-color: #00ced1;
+            color: #fff;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .vouch-modal button:hover {
+            background-color: #ffd700;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #f00;
+        }
+
+        /* Vouch list section */
+        .vouch-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            color: #f4f4f4;
+            text-align: left;
+        }
+
+        .vouch-list li {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #f4f4f4;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 3px solid #ffd700;
+        }
+
+        footer a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #00ced1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Opidots Services</h1>
+        <p>🌊 Welcome to Opidots Services - Your Ultimate Blox Fruits Support! 🌊</p>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#discord">Discord</a>
+            <a href="#" id="vouchButton">Vouches</a> <!-- Vouch button added -->
+        </nav>
+    </header>
+
+    <section id="about" class="info">
+        <h2>About Opidots Services</h2>
+        <p>
+            Ahoy, pirates of <em>Blox Fruits</em>! 🏴‍☠️ Ready to level up your game? <strong>Opidots Services</strong> is here to help you conquer every challenge! 
+            Whether it’s raids, bounty hunting, or grinding, we’ve got you covered!
+        </p>
+    </section>
+
+    <section id="services" class="services">
+        <h2>✨ Services We Provide:</h2>
+        <ul>
+            <li>⚔️ <strong>Raid Carrying:</strong> Need assistance with specific raids? Our team will carry you to victory!</li>
+            <li>🧬 <strong>Race Trials:</strong> Get help with trials for all races to unlock new abilities and powers.</li>
+            <li>👑 <strong>Boss Spawning:</strong> Want to battle Rip Indra, Dough King, or other rare bosses? We’ll spawn them for you!</li>
+            <li>🌊 <strong>Sea Events:</strong> Join us for ship raids and all kinds of sea events!</li>
+            <li>🔥 <strong>Bounty Hunting:</strong> Level up your bounty with our skilled hunters at your side.</li>
+            <li>🤝 <strong>Trade Finding:</strong> Locate and secure the best trades safely and efficiently.</li>
+            <li>📈 <strong>Level Grinding:</strong> From level 0 to max level, we’ll grind with you every step of the way!</li>
+            <li>⚔️ <strong>Sword Acquisition:</strong> Need powerful swords like CDK, TTK, or others? We’ll help you obtain them!</li>
+        </ul>
+    </section>
+
+    <section id="discord" class="discord-section">
+        <h2>Join Our Discord</h2>
+        <a href=" https://discord.gg/opidiots" target="_blank">Click here to join our Discord</a>
+    </section>
+
+    <!-- Modal for Vouch Section -->
+    <div id="vouchModal" class="vouch-modal">
+        <div class="vouch-modal-content">
+            <span class="close">&times;</span>
+            <h2>Leave a Vouch</h2>
+            <form id="vouchForm">
+                <input type="text" id="nameInput" placeholder="Your Name" required>
+                <textarea id="vouchInput" placeholder="Leave your vouch here..." required></textarea>
+                <button type="submit">Submit Vouch</button>
+            </form>
+            <ul id="vouchList" class="vouch-list"></ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Opidots Services. All rights reserved. | <a href="#top">Back to Top</a></p>
+    </footer>
+
+    <script>
+        // Show modal when Vouch button is clicked
+        const vouchButton = document.getElementById('vouchButton');
+        const vouchModal = document.getElementById('vouchModal');
+        const closeModal = document.querySelector('.close');
+        const vouchForm = document.getElementById('vouchForm');
+        const vouchList = document.getElementById('vouchList');
+
+        vouchButton.onclick = function() {
+            vouchModal.style.display = 'block'; // Show the modal
+        }
+
+        closeModal.onclick = function() {
+            vouchModal.style.display = 'none'; // Close the modal
+        }
+
+        // Handle vouch form submission
+        vouchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('nameInput').value;
+            const message = document.getElementById('vouchInput').value;
+
+            // Create new vouch list item
+            const newVouch = document.createElement('li');
+            newVouch.textContent = `${name}: ${message}`;
+            vouchList.appendChild(newVouch);
+
+            // Clear the form
+            document.getElementById('nameInput').value = '';
+            document.getElementById('vouchInput').value = '';
+
+            // Close the modal after submission
+            vouchModal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
